@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   },
 
   modules: [
+    'motion-v/nuxt',
     '@nuxt/content',
     '@nuxt/eslint',
     '@nuxt/fonts',

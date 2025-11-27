@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+html, body, #__nuxt {
+    width: 100vw;
+    height: 100vh;
+    /* background-color: var(--color-background); */
+}
+
+@theme {
+    --color-background: oklch(0.9717 0.0332 88.06);
+}
