@@ -1,0 +1,27 @@
+{
+  "name": "Spacebar",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/content": "3.8.2",
+    "@nuxt/eslint": "1.11.0",
+    "@nuxt/fonts": "0.12.1",
+    "@nuxt/hints": "1.0.0-alpha.2",
+    "@nuxt/icon": "2.1.0",
+    "@nuxt/image": "2.0.0",
+    "@tailwindcss/vite": "^4.1.17",
+    "better-sqlite3": "^12.4.6",
+    "eslint": "^9.0.0",
+    "nuxt": "^4.2.1",
+    "tailwindcss": "^4.1.17",
+    "vue": "^3.5.25",
+    "vue-router": "^4.6.3"
+  }
+}
