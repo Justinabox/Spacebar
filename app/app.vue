@@ -10,7 +10,7 @@ const showSidebar = computed(() => {
     <div class="w-screen h-screen max-w-screen max-h-screen gap-4 p-3 flex flex-col">
         <Header />
 
-        <div class="w-full h-full rounded-lg flex">
+        <div class="w-full flex-1 min-h-0 rounded-lg flex">
             <AnimatePresence>
                 <motion.div :initial="{ width: 0 }" :animate="{ width: 208 }" :exit="{ width: 0 }" v-if="showSidebar">
                     <Sidebar />
