@@ -1,23 +1,21 @@
 <script setup lang="ts">
-import { inject } from 'vue'
+import { ref, onMounted } from 'vue'
+import { usePanelController } from '@/composables/usePanelController'
 
 const props = defineProps<{
     id: string
 }>()
 
 const linkedNode = ref<HTMLDivElement | null>(null)
+const { updateEndNode } = usePanelController()
 
-const contextManager = inject('panelContextManager') as PanelContextManager
-
-// Update the end node context when the component is mounted
 onMounted(() => {
-    if (contextManager) {
-        contextManager.updateEndNodeContext(props.id, linkedNode)
+    if (linkedNode.value) {
+        updateEndNode(props.id, linkedNode.value)
     }
 })
 </script>
 
 <template>
-    <div ref="linkedNode">
-    </div>
+    <div ref="linkedNode"></div>
 </template>

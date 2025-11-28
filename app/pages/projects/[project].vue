@@ -1,14 +1,8 @@
 <script lang="ts" setup>
-import { PanelContextManager } from '@/composables/panelContextManager'
-import { provide } from 'vue'
-
 const route = useRoute()
 const { data } = await useAsyncData(route.path, () => {
   return queryCollection('content').path('/' + route.params.project).first()
 })
-
-const contextManager = new PanelContextManager()
-provide('panelContextManager', contextManager)
 </script>
 
 <template>

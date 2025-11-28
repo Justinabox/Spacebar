@@ -1,35 +1,55 @@
 <script setup lang="ts">
-import { useSlots, onMounted, inject } from 'vue'
+import { ref, onMounted, onBeforeUnmount, computed } from 'vue'
+import { usePanelController } from '@/composables/usePanelController'
 
 const props = defineProps<{
     id: string
     side: 'left' | 'right'
 }>()
 
+const { registerPanel, unregisterPanel, updateStartNode, getPanelState } = usePanelController()
 const mobileViewport = isMobileViewport()
-const slots = useSlots()
+
 const linkedNode = ref<HTMLDivElement | null>(null)
+const isMounted = ref(false)
 
-const contextManager = inject('panelContextManager') as PanelContextManager
+// Register immediately so layout can prepare targets
+registerPanel(props.id, props.side)
 
-// Update the start node context when the component is mounted
+const panelState = computed(() => getPanelState(props.id))
+
 onMounted(() => {
-    console.log("registering:", props.id, props.side, linkedNode.value);
-    const slotContent = slots.default?.()
-    
-    if (contextManager && slotContent && linkedNode && props.id) {
-        contextManager.updateStartNodeContext(props.id, linkedNode, slotContent, props.side)
+    isMounted.value = true
+    if (linkedNode.value) {
+        updateStartNode(props.id, linkedNode.value)
     }
+})
+
+onBeforeUnmount(() => {
+    unregisterPanel(props.id)
 })
 </script>
 
 <template>
-    <!-- Position reference layer -->
     <div ref="linkedNode">
-        <!-- Content Layer -->
-        <strong>Context In</strong>
+        <!-- Mobile content (inline) -->
         <div v-if="mobileViewport">
             <slot />
         </div>
+
+        <!-- Desktop content (teleported) -->
+        <Teleport v-else-if="isMounted" :to="`#panel-teleport-${side}`">
+            <div 
+                v-if="panelState && panelState.isVisible"
+                :style="{ 
+                    transform: `translateY(${panelState.offset}px)`,
+                    position: 'absolute',
+                    width: '100%',
+                    left: 0
+                }"
+            >
+                <slot />
+            </div>
+        </Teleport>
     </div>
 </template>

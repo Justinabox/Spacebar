@@ -26,6 +26,10 @@
                     <a class="text-lg">Funny</a>
                 </div>
             </div>
+
+            <div>
+                <NuxtLink to="/projects/experiment" class="text-xl">Experiment</NuxtLink>
+            </div>
         </div>
 
         <!-- Foot notes -->
