@@ -28,6 +28,13 @@
             </div>
 
             <div>
+                <a class="text-xl">Archives</a>
+                <div class="flex flex-col pl-3 text-stone-400">
+                    <a class="text-lg">2023</a>
+                </div>
+            </div>
+
+            <div>
                 <NuxtLink to="/projects/experiment" class="text-xl">Experiment</NuxtLink>
             </div>
         </div>

@@ -8,6 +8,7 @@ const showSidebar = computed(() => {
 
 <template>
     <div class="w-screen h-screen max-w-screen max-h-screen gap-4 p-3 flex flex-col">
+        <!-- <embed src="https://staging.justzhu.com" class="w-full h-full fixed z-[-1] top-0 left-0 opacity-30" /> -->
         <Header />
 
         <div class="w-full flex-1 min-h-0 rounded-lg flex">

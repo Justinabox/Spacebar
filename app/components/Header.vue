@@ -10,7 +10,7 @@
         </div>
 
         <div class="flex gap-2 text-lg">
-            <NuxtLink to="/contact">Contact</NuxtLink>
+            <NuxtLink to="/resume">Resume</NuxtLink>
         </div>
     </div>
 </template>
